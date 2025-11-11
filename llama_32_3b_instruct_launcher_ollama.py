@@ -1,81 +1,54 @@
 # %% [0.0] Launcher Script Info
-"""
-Ollama Llama 3.2 3B Launcher - Bare Bones Version
-Filename: llama_32_3b_instruct_launcher_ollama.py
-Description: Minimal launcher for Llama 3.2 3B using Ollama API
-Author: dougeeai
-Created: 2025-11-09
-Last Updated: 2025-11-09
-Note: Uses Ollama API instead of direct GGUF loading
-"""
+# Script metadata and documentation for version tracking
+# Ollama Llama 3.2 3B Launcher - Bare Bones Version
+# Description: Minimal launcher for Llama 3.2 3B using Ollama API
+# Author: dougeeai
+# Created: 2025-11-09
+# Last Updated: 2025-11-11
+# Note: Uses Ollama API instead of direct GGUF loading
 
 # %% [0.1] Model Card & Summary
-"""
-MODEL: Llama 3.2 3B via Ollama
-Architecture: Llama 3.2
-Size: ~2GB download (Ollama handles quantization)
-Use Cases: General chat, instruction following
-Requirements: Ollama installed and running
-Note: Ollama manages GGUF files internally
-"""
+# Quick reference for model capabilities and requirements
+# MODEL: Llama-3.2-3B via Ollama
+# Architecture: Llama 3.2 (3.21B parameters)
+# Size: ~2GB download (Ollama handles quantization)
+# Requirements: Ollama installed and running
+# Note: Ollama manages GGUF files internally
 
 # %% [1.0] Core Imports
-"""
-Core imports for Ollama API interaction
-"""
+# Essential imports for Ollama API interaction
 import json
 import requests
 import sys
 
 # %% [1.1] Utility Imports
-"""
-Not applicable - bare bones version
-"""
-# Not needed for Ollama API
+# Bare Version: Utility imports skipped
 
-# %% [2.0] User Configuration - All Settings
-"""
-All user-modifiable settings for Ollama
-"""
+# %% [2.0] Base Directory Configuration
+# Not applicable - Ollama manages all file storage internally
+
+# %% [2.1] Model Source Configuration
+# Not applicable - Models downloaded via: ollama pull llama3.2:3b
+
+# %% [2.2] User Configuration - All Settings
+# Central location for all user-modifiable settings
+
 MODEL = "llama3.2:3b"  # Ollama model name
 HOST = "http://localhost:11434"  # Ollama API endpoint
 TEMP = 0.7  # Temperature for generation
 SYSTEM_MSG = "You are a helpful AI assistant."  # System prompt
 
-# %% [2.1] Model Configuration Dataclass
-"""
-Not applicable - using simple variables
-"""
-# Bare bones version uses direct variables
-
-# %% [2.2] Model Path Validation
-"""
-Not applicable - Ollama manages model files
-"""
-# Ollama handles model storage internally
-
-# %% [2.3] Model Paths - HF Download (Optional)
-"""
-Not applicable - use 'ollama pull llama3.2:3b' instead
-"""
-# Models downloaded via: ollama pull llama3.2:3b
+# %% [2.3] Model Configuration Dataclass
+# Bare Version: Dataclass skipped - using direct variables
 
 # %% [3.0] Hardware Auto-Detection
-"""
-Not applicable - Ollama handles hardware optimization
-"""
-# Ollama automatically uses available GPU/CPU
+# Not applicable - Ollama handles hardware optimization automatically
 
 # %% [3.1] Hardware Detection
-"""
-Not applicable - Ollama manages hardware
-"""
-# Hardware detection handled by Ollama
+# Not applicable - Ollama manages hardware
 
 # %% [3.2] Environment Validation
-"""
-Simple check if Ollama is running
-"""
+# Simple check if Ollama service is running
 def check_ollama():
     """Check if Ollama service is running"""
     try:
@@ -85,33 +58,19 @@ def check_ollama():
         return False
 
 # %% [4.0] Model Loader
-"""
-Not applicable - Ollama loads models automatically
-"""
-# Model loading handled by Ollama API
+# Not applicable - Ollama loads models automatically
 
 # %% [4.1] Model Validation
-"""
-Not applicable - Ollama validates models
-"""
-# Ollama handles model validation
+# Not applicable - Ollama validates models
 
 # %% [5.0] Model Initialization
-"""
-Not applicable - models initialized per request
-"""
-# Ollama initializes model on API calls
+# Not applicable - Models initialized per request
 
 # %% [6.0] Inference Test
-"""
-Not applicable - jumping straight to chat
-"""
-# Test happens naturally with first chat message
+# Not applicable - Test happens naturally with first chat message
 
 # %% [6.1] Terminal Chat Interface
-"""
-Main chat loop for Ollama interaction
-"""
+# Interactive chat loop with Ollama streaming
 def chat():
     """Interactive chat with Ollama"""
     print(f"Chat with {MODEL} - Type 'quit' to exit")
@@ -156,20 +115,15 @@ def chat():
         print()
         messages.append({"role": "assistant", "content": full_response})
         
-        # Trim history if too long
+        # Keep history manageable
         if len(messages) > 20:
             messages = [messages[0]] + messages[-18:]
 
 # %% [7.0] Optional Features
-"""
-Not applicable - bare bones version
-"""
-# JSON mode available via Ollama API if needed
+# Bare Version: Optional features skipped
 
 # %% [8.0] Main Entry Point
-"""
-Main execution flow for Ollama launcher
-"""
+# Simple main function - check Ollama and start chat
 def main():
     """Main entry point - check Ollama and start chat"""
     # Check if Ollama is running
